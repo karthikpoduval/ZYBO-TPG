@@ -1,0 +1,44 @@
+/*
+ * tpg.c
+ *
+ *  Created on: Jul 2, 2017
+ *      Author: Karthik Poduval <kpoduval@gmail.com>
+ *
+ *
+ */
+#include "xv_tpg.h"
+
+void init_tpg(void)
+{
+/* initialize TPG */
+	int Status;
+
+	Status = XV_tpg_Initialize(&tpg, XPAR_V_TPG_0_DEVICE_ID);
+	  if(Status != XST_SUCCESS) {
+	    xil_printf("ERR:: TPG device not found\r\n");
+	    return(XST_FAILURE);
+	  } else {
+
+		  xil_printf("KVPZ: TPG initialized Hurray\r\n");
+	  }
+
+
+}
+
+
+static void ConfigTpg(int width, int height, XTpg_PatternId pattern)
+{
+  //Stop TPG
+  XV_tpg_DisableAutoRestart(&tpg);
+
+  XV_tpg_Set_height(&tpg, widht);
+  XV_tpg_Set_width(&tpg, height);
+  XV_tpg_Set_colorFormat(&tpg, 0x0); /** 0x0 RGB video */
+  //XV_tpg_Set_bckgndId(&tpg, XTPG_BKGND_CHECKER_BOARD);
+  XV_tpg_Set_bckgndId(&tpg, XTPG_BKGND_TARTAN_COLOR_BARS);
+  XV_tpg_Set_ovrlayId(&tpg, 0); /* moving box*/
+
+}
+
+
+

@@ -1,0 +1,16 @@
+/*
+ * vdma_example.h
+ *
+ *  Created on: Jul 1, 2017
+ *      Author: kpoduval
+ */
+
+#ifndef SRC_VDMA_EXAMPLE_H_
+#define SRC_VDMA_EXAMPLE_H_
+
+void tpg_vdma_config(UINTPTR WriteFrameAddr);
+void init_tpg(void);
+void start_tpg(void);
+
+
+#endif /* SRC_VDMA_EXAMPLE_H_ */
